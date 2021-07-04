@@ -47,7 +47,7 @@ const Contact = () => {
     <>
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
-          <h1 className="display-4 text-center">Contact Register</h1>
+          <h1 className="display-4 text-center mb-5">Task Manager</h1>
         </div>
       </div>
       <div className="row">
@@ -55,13 +55,13 @@ const Contact = () => {
           <ContactForm {...{ addOrEdit, currentId, contactObjects }} />
         </div>
         <div className="col-md-7">
-          <table className="table table-borderless table-stripped">
+          <table className="table">
             <thead className="thead-light">
               <tr>
-                <th>Full Name</th>
-                <th>Mobile</th>
-                <th>Email</th>
-                <th>Address</th>
+                <th>Task Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Comments</th>
                 <th>Actions</th>
               </tr>
             </thead>

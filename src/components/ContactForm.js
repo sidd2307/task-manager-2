@@ -11,15 +11,15 @@ const ContactForm = (props) => {
   var [values, setValues] = useState(initialFieldValues);
 
   useEffect(() => {
-      if (props.currentId == '')
-          setValues({
-            ...initialFieldValues
-      })
-      else
-          setValues({
-            ...props.contactObjects[props.currentId]
-    })
-  }, [props.currentId, props.contactObjects])
+    if (props.currentId == "")
+      setValues({
+        ...initialFieldValues,
+      });
+    else
+      setValues({
+        ...props.contactObjects[props.currentId],
+      });
+  }, [props.currentId, props.contactObjects]);
 
   const handleInputChange = (e) => {
     var { name, value } = e.target;
@@ -29,42 +29,36 @@ const ContactForm = (props) => {
     });
   };
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e) => {
     //   prevent refreshing
     e.preventDefault();
-    props.addOrEdit(values)
-
-  }
+    props.addOrEdit(values);
+  };
 
   return (
-    // prevent previous filled values
     <form autoComplete="off" onSubmit={handleFormSubmit}>
-      <div className="form-group input-group">
+      <div className="form-group input-group mb-5">
         {/* icon before text-box */}
-        <div className="input-group-prepend">
-          <div className="input-group-text">
-            <i className="fas fa-user"></i>
-          </div>
+        <div className="label">
+          <div className="input-group-text">Task-Name</div>
         </div>
         <input
           className="form-control"
-          placeholder="Full-Name"
+          placeholder="Task-Name"
           name="fullName"
           value={values.fullName}
           onChange={handleInputChange}
         />
       </div>
+
       <div className="form-row">
         <div className="form-group input-group col-md-6">
-          {/* icon before text-box */}
-          <div className="input-group-prepend">
-            <div className="input-group-text">
-              <i className="fas fa-mobile-alt"></i>
-            </div>
+          <div className="input-group-prepend mb-5">
+            <div className="input-group-text">Description</div>
           </div>
           <input
-            className="form-control"
-            placeholder="Mobile"
+            className="form-control mb-5"
+            placeholder="Description"
             name="mobile"
             value={values.mobile}
             onChange={handleInputChange}
@@ -73,14 +67,14 @@ const ContactForm = (props) => {
 
         <div className="form-group input-group col-md-6">
           {/* icon before text-box */}
-          <div className="input-group-prepend">
+          <div className="input-group-prepend mb-5">
             <div className="input-group-text">
-              <i className="fas fa-envelope"></i>
+              Status
             </div>
           </div>
           <input
-            className="form-control"
-            placeholder="Email"
+            className="form-control mb-5"
+            placeholder="To-Do..Doing..Done"
             name="email"
             value={values.email}
             onChange={handleInputChange}
@@ -90,7 +84,7 @@ const ContactForm = (props) => {
       <div className="form-group">
         <textarea
           className="form-control"
-          placeholder="Address"
+          placeholder="Comments"
           name="address"
           value={values.address}
           onChange={handleInputChange}
@@ -99,8 +93,8 @@ const ContactForm = (props) => {
       <div className="form-group">
         <input
           type="submit"
-          value={props.currentId==''?"Save":"Update"}
-          className="btn-btn-primary btn-block"
+          value={props.currentId == "" ? "Save" : "Update"}
+          className="btn btn-primary btn-block mt-5"
         />
       </div>
     </form>
